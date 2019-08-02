@@ -1,0 +1,62 @@
+<html>
+<head>
+<style>
+body{
+background-color: #222222;
+font-size: 24px;
+color:white;
+#slider{
+height:300px;
+width:300px;
+
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  
+  
+<script type="text/javascript">
+
+var numer = Math.floor(Math.random()*5)+1;
+var timer1=0;
+var timer2=0;
+
+
+function ustawslajd(nrslajdu){
+clearTimeout(timer1);
+clearTimeout(timer2);
+numer=nrslajdu - 1 ;
+schowaj();
+setTimeout("zmienslajd()", 500)
+}
+
+function schowaj(){
+$("#slider").fadeOut(500);
+}
+function zmienslajd()
+{
+numer++; if ( numer>5) numer=1;
+
+var plik = "<img src=\"slajdy/00"+numer+".jpg\"/>"
+
+document.getElementById("slider").innerHTML = plik;
+$("#slider").fadeIn(500);
+
+timer1 = setTimeout("zmienslajd()", 5000);
+timer2 = setTimeout("schowaj()", 4500);
+
+}
+</script>
+<body onload="zmienslajd()">
+<span onclick="ustawslajd(1)" style="cursor:pionter;">1</span>
+<span onclick="ustawslajd(2)" style="cursor:pionter;">⚫</span>
+<span onclick="ustawslajd(3)" style="cursor:pionter;">⚫</span>
+<span onclick="ustawslajd(4)" style="cursor:pionter;">⚫</span>
+<span onclick="ustawslajd(5)" style="cursor:pionter;">⚫</span>
+<div id="slider">
+
+</div>
+
+</body>
+</head>
+</html>
